@@ -1,0 +1,3 @@
+/Users/davidlamoot/Documents/SFMLtest/CMakeFiles/Paris_2024_simulator.dir
+/Users/davidlamoot/Documents/SFMLtest/CMakeFiles/edit_cache.dir
+/Users/davidlamoot/Documents/SFMLtest/CMakeFiles/rebuild_cache.dir
