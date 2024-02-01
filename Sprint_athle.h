@@ -18,7 +18,8 @@ class Sprint_athle : public Athletisme {
         Sprint_athle(std::string nom, std::string lieu, std::string date, std::string  epreuve, std::string sexe);
         ~Sprint_athle();
         virtual void afficher() const;
-        std::string setEpreuve(std::string epreuve, std::string sexe, Sprinter sprinter[8]);
+        std::string set100m(std::string epreuve,std::string sexe, Sprinter sprinter[8]);
+        std::string set200m(std::string epreuve,std::string sexe, Sprinter sprinter[8]);
         virtual Sprinter retrouverPerf(double perf, Sprinter sprinter[8], std::string epreuve);
         virtual void afficherClassement(std::priority_queue<double, std::vector<double>, std::greater<double>> classement, Sprinter sprinter[8], std::string epreuve);
         virtual std::string afficherClassementToString(std::priority_queue<double, std::vector<double>, std::greater<double>> classement, Sprinter sprinter[8], std::string epreuve);

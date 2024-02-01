@@ -66,9 +66,8 @@ std::string Sprint_athle::afficherClassementToString(std::priority_queue<double,
     return output.str();
 }
 
-
-//Initialise et simule une des épreuves possibles de sprint
-std::string Sprint_athle::setEpreuve(std::string epreuve, std::string sexe, Sprinter sprinter[8]) {
+//Initialise et simule l'épreuve du 100m
+std::string Sprint_athle::set100m(std::string epreuve, std::string sexe, Sprinter sprinter[8]) {
     this->epreuve = epreuve;
     this->sexe = sexe;
     std::priority_queue<double, std::vector<double>, std::greater<double>> classement; // Classement des performances ordonné selon le résultat des sprinters
@@ -77,17 +76,6 @@ std::string Sprint_athle::setEpreuve(std::string epreuve, std::string sexe, Spri
             for(int i = 0; i < 8; ++i) {
                 if (sprinter[i].getSexe() == "M") {
                     classement.push(sprinter[i].perf_jour_100m(sprinter[i].getPerformances(epreuve)));
-                    }
-                else{
-                    std::cout << "Le sprinter n'est pas un homme" << std::endl;
-                }
-            }
-           //afficherClassement(classement, sprinter, epreuve);
-           return afficherClassementToString(classement, sprinter, epreuve);
-        } else if (epreuve == "200m") {
-            for(int i = 0; i < 8; ++i) {
-                if (sprinter[i].getSexe() == "M") {
-                    classement.push(sprinter[i].perf_jour_200m(sprinter[i].getPerformances(epreuve)));
                 }
                 else{
                     std::cout << "Le sprinter n'est pas un homme" << std::endl;
@@ -95,10 +83,6 @@ std::string Sprint_athle::setEpreuve(std::string epreuve, std::string sexe, Spri
             }
             //afficherClassement(classement, sprinter, epreuve);
             return afficherClassementToString(classement, sprinter, epreuve);
-        } else if (epreuve == "400m") {
-            std::cout << "Epreuve : " << this->epreuve << " masculin" << std::endl;
-        } else {
-            std::cout << "Erreur" << std::endl;
         }
     } else if(this->sexe == "F") {
         if (epreuve == "100m") {
@@ -112,7 +96,32 @@ std::string Sprint_athle::setEpreuve(std::string epreuve, std::string sexe, Spri
             }
             //afficherClassement(classement, sprinter, epreuve);
             return afficherClassementToString(classement, sprinter, epreuve);
-        } else if (epreuve == "200m") {
+        }
+    } else {
+        std::cout << "Erreur" << std::endl;
+    }
+}
+
+//Initialise et simule l'épreuve du 200m
+std::string Sprint_athle::set200m(std::string epreuve, std::string sexe, Sprinter sprinter[8]) {
+    this->epreuve = epreuve;
+    this->sexe = sexe;
+    std::priority_queue<double, std::vector<double>, std::greater<double>> classement; // Classement des performances ordonné selon le résultat des sprinters
+    if (this->sexe == "M") {
+        if (epreuve == "200m") {
+            for(int i = 0; i < 8; ++i) {
+                if (sprinter[i].getSexe() == "M") {
+                    classement.push(sprinter[i].perf_jour_200m(sprinter[i].getPerformances(epreuve)));
+                }
+                else{
+                    std::cout << "Le sprinter n'est pas un homme" << std::endl;
+                }
+            }
+            //afficherClassement(classement, sprinter, epreuve);
+            return afficherClassementToString(classement, sprinter, epreuve);
+        }
+    } else if(this->sexe == "F") {
+        if (epreuve == "200m") {
             for(int i = 0; i < 8; ++i) {
                 if (sprinter[i].getSexe() == "F") {
                     classement.push(sprinter[i].perf_jour_200m(sprinter[i].getPerformances(epreuve)));
@@ -125,7 +134,7 @@ std::string Sprint_athle::setEpreuve(std::string epreuve, std::string sexe, Spri
             return afficherClassementToString(classement, sprinter, epreuve);
         }
     } else {
-            std::cout << "Erreur" << std::endl;
+        std::cout << "Erreur" << std::endl;
     }
 }
 
